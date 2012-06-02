@@ -16,7 +16,6 @@
 
 @interface UserRegistrationViewController ()
 
-- (void)startStandardUpdates;
 - (void)registerSucceed;
 - (void)showLoadingViewWithMessage:(NSString *)message;
 - (void)hideLoadingView;
@@ -33,21 +32,6 @@
 @synthesize loadingIndicator;
 
 
-- (void)dealloc
-{
-    [txtNickname release];
-    [txtEmail release];
-    [txtPassword release];
-    [txtConfirmPassword release];
-
-    [loadingView release];
-    [loadingIndicator release];
-    [lblLoadingMessage release];
-    [m_webServiceManager release];
-    
-    [super dealloc];
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -63,7 +47,6 @@
     
     m_appDataManager = [AppDataManager sharedAppDataManager];
     m_webServiceManager = [[WebServiceManager alloc] init];
-    [self startStandardUpdates];
 }
 
 - (void)viewDidUnload
@@ -87,6 +70,13 @@
     [self.navigationController setNavigationBarHidden:YES];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [m_webServiceManager cancelRequests];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
@@ -104,7 +94,7 @@
     {
         if ( [txtPassword.text caseInsensitiveCompare:txtConfirmPassword.text] == NSOrderedSame )
         {
-            [m_webServiceManager registerUserWithNickName:txtNickname.text email:txtEmail.text password:txtPassword.text location:m_locationManager.location andDelegate:self];
+            [m_webServiceManager registerUserWithNickName:txtNickname.text email:txtEmail.text password:txtPassword.text andDelegate:self];
             [self showLoadingViewWithMessage:@"注册用户 ..."];
         }
         else 
@@ -128,19 +118,6 @@
 
 #pragma mark -
 #pragma mark Private Methods
-- (void)startStandardUpdates
-{
-    if ( nil == m_locationManager )
-    {
-        m_locationManager = [[CLLocationManager alloc] init];
-    }
-    
-    m_locationManager.delegate = self;
-    m_locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-    m_locationManager.distanceFilter = 500;
-    [m_locationManager startUpdatingLocation];
-}
-
 - (void)showLoadingViewWithMessage:(NSString *)message
 {
     [self.view addSubview:loadingView];
@@ -177,7 +154,6 @@
     NSData *jsonData = [request responseData];
     JSONDecoder *decoder = [[JSONDecoder alloc] initWithParseOptions:JKParseOptionNone];
     NSDictionary *response = [decoder objectWithData:jsonData];
-    [decoder release];
 //    NSLog(@"%@", response);
     
     if ( response )
@@ -198,7 +174,6 @@
                 
                 m_appDataManager.user = user;
                 [self registerSucceed];
-                [user release];
             }
             else if ( message != nil )
             {

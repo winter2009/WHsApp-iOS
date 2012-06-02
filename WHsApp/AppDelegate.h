@@ -7,9 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginViewController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@class AppDataManager;
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate, LoginDelegate>
+{
+    AppDataManager          *m_appDataManager;
+    UINavigationController  *m_loginController;
+}
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) UINavigationController *rootNavigationController;
+
+- (void)logout;
 
 @end

@@ -7,18 +7,36 @@
 //
 
 #import "AppDelegate.h"
+#import "HomeViewController.h"
+
+@interface AppDelegate ()
+
+- (void)checkNeedLogin;
+
+@end
 
 @implementation AppDelegate
-
 @synthesize window = _window;
+@synthesize rootNavigationController = _rootNavigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-//    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-//    self.window.rootViewController = self.viewController;
+    
+    m_appDataManager = [AppDataManager sharedAppDataManager];
+    HomeViewController *homeController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+    self.rootNavigationController = [[UINavigationController alloc] initWithRootViewController:homeController];
+    self.window.rootViewController = self.rootNavigationController;
+    LoginViewController *loginController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    loginController.delegate = self;
+    m_loginController = [[UINavigationController alloc] initWithRootViewController:loginController];
+    
     [self.window makeKeyAndVisible];
+    
+    [self checkNeedLogin];
+    
+    self.rootNavigationController.navigationBar.barStyle = UIBarStyleBlack;
+
     return YES;
 }
 
@@ -60,5 +78,33 @@
      See also applicationDidEnterBackground:.
      */
 }
+
+#pragma mark -
+#pragma mark Public Method
+- (void)logout
+{
+    [m_appDataManager loggedOut];
+    [m_appDataManager clearUsernamePassword];
+    [self checkNeedLogin];
+}
+
+#pragma mark -
+#pragma mark Private Method
+- (void)checkNeedLogin
+{
+    if ( ![m_appDataManager isUserLoggedIn] ) 
+    {
+        [m_loginController popToRootViewControllerAnimated:NO];
+        [self.rootNavigationController presentModalViewController:m_loginController animated:NO];
+    }
+}
+
+#pragma mark -
+#pragma mark Login Delegate
+- (void)loginSucceed
+{
+    [self.rootNavigationController dismissModalViewControllerAnimated:YES];
+}
+
 
 @end

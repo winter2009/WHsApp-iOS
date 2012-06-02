@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
+#import "ASINetworkQueue.h"
 #import <CoreLocation/CoreLocation.h>
 #import "User.h"
 
@@ -17,17 +18,17 @@
 @interface WebServiceManager : NSObject
 {
     AppDataManager  *m_appDataManager;
+    ASINetworkQueue *m_networkQueue;
 }
 
-- (void)loginWithUsername:(NSString *)username password:(NSString *)password location:(CLLocation *)location andDelegate:(id<ASIHTTPRequestDelegate>)delegate;
-- (void)registerUserWithNickName:(NSString *)nickName email:(NSString *)email password:(NSString *)password location:(CLLocation *)location andDelegate:(id<ASIHTTPRequestDelegate>)delegate;
-- (void)getNearbyUsersWithFilters:(CLLocation *)location filters:(NSDictionary *)filters andDelegate:(id<ASIHTTPRequestDelegate>)delegate;
-- (void)getUserInfoWithUserID:(NSInteger)userID andDelegate:(id<ASIHTTPRequestDelegate>)delegate;
-- (void)createChatGroupWithUsers:(NSArray *)users andDelegate:(id<ASIHTTPRequestDelegate>)delegate;
-- (void)addUsersToChatGroup:(NSArray *)users groupID:(NSInteger)groupID andDelegate:(id<ASIHTTPRequestDelegate>)delegate;
-- (void)sendMessageToGroup:(NSInteger)senderID groupID:(NSInteger)groupID message:(NSString *)message andDelegate:(id<ASIHTTPRequestDelegate>)delegate;
-- (void)getGroupChatHistory:(NSInteger)groupID since:(NSDate *)date andDelegate:(id<ASIHTTPRequestDelegate>)delegate;
-- (void)getChatHistoryGroupListWithDelegate:(id<ASIHTTPRequestDelegate>)delegate;
-- (void)updateUserDetailWithUser:(User *)user andDelegate:(id<ASIHTTPRequestDelegate>)delegate;
+- (void)loginWithUsername:(NSString *)username password:(NSString *)password andDelegate:(id<ASIHTTPRequestDelegate>)delegate;
+- (void)registerUserWithNickName:(NSString *)nickName email:(NSString *)email password:(NSString *)password andDelegate:(id<ASIHTTPRequestDelegate>)delegate;
+- (void)getCagetoriesWithDelegate:(id<ASIHTTPRequestDelegate>)delegate;
+- (void)getSubCategoriesForCategory:(NSString *)category withDelegate:(id<ASIHTTPRequestDelegate>)delegate;
+- (void)sendMessageToAdmin:(NSInteger)senderID subject:(NSString *)subject content:(NSString *)content replyTo:(NSInteger)messageID withDelegate:(id<ASIHTTPRequestDelegate>)delegate;
+- (void)getMessagesForUser:(NSInteger)userID withDelegate:(id<ASIHTTPRequestDelegate>)delegate;
+- (void)getMediaForSubCategory:(NSInteger)subCategoryID withDelegate:(id<ASIHTTPRequestDelegate>)delegate;
+
+- (void)cancelRequests;
 
 @end

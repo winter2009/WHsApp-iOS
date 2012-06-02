@@ -9,17 +9,13 @@
 #ifndef LaLa_Settings_h
 #define LaLa_Settings_h
 
-#define WEBSERVICE_BASE_URL                 @"http://172.20.10.3:8888/wll-web/api/"
-//#define WEBSERVICE_BASE_URL                 @"http://192.168.1.101/projects/wll-web/api/"
+#define WEBSERVICE_BASE_URL                 @"http://192.168.1.101:8888/media_center/index.php/api/"
 #define WEBSERVICE_LOGIN                    @"userlogin"
-#define WEBSERVICE_REGISTER                 @"userregister"
-#define WEBSERVICE_GETNEARBYUSERSWITHFILTERS         @"getnearbyuserswithfilters"
-#define WEBSERVICE_GETUSERINFO              @"getuserinfo"
-#define WEBSERVICE_CREATECHATGROUP          @"createchatgroup"
-#define WEBSERVICE_ADDUSERSTOCHATGROUP      @"adduserstochatgroup"
-#define WEBSERVICE_SENDMESSAGETOGROUP       @"sendmessagetogroup"
-#define WEBSERVICE_GETGROUPCHATHISTORY      @"getgroupchathistory"
-#define WEBSERVICE_GETCHATHISTORYGROUPLIST  @"getchatgrouplist"
-#define WEBSERVICE_UPDATEUSERDETAIL         @"updateuserdetail"
+#define WEBSERVICE_REGISTER                 @"registeruser"
+#define WEBSERVICE_GETCATEGORIES            @"getcategories"
+#define WEBSERVICE_GETSUBCATEGORIES         @"getsubcategories"
+#define WEBSERVICE_SENDMESSAGETOADMIN       @"sendmessagetoadmin"
+#define WEBSERVICE_GETMESSAGES              @"getmessages"
+#define WEBSERVICE_GETMEDIAFORSUBCATEGORY   @"getmediaforsubcategory"
 
 #endif

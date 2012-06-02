@@ -8,9 +8,9 @@
 
 #import "AppDataManager.h"
 
-#define KEY_REMEMBER_PASSWORD   @"lala-remember-password"
-#define KEY_USERNAME            @"lala-username"
-#define KEY_PASSWORD            @"lala-password"
+#define KEY_REMEMBER_PASSWORD   @"whsapp-remember-password"
+#define KEY_USERNAME            @"whsapp-username"
+#define KEY_PASSWORD            @"whsapp-password"
 
 static AppDataManager *singletonAppDataManager = nil;
 
@@ -20,20 +20,11 @@ static AppDataManager *singletonAppDataManager = nil;
 @synthesize username = m_username;
 @synthesize password = m_password;
 
-- (void)dealloc
-{
-    [user release];
-    [m_username release];
-    [m_password release];
-    
-	[super dealloc];
-}
-
 - (id)init
 {
 	if (( self = [super init] ))
 	{
-		m_isUserLoggedIn = NO;      
+		m_isUserLoggedIn = NO;
         m_userDefaults = [NSUserDefaults standardUserDefaults];
         
         BOOL isRemember = [m_userDefaults boolForKey:KEY_REMEMBER_PASSWORD];
@@ -118,24 +109,5 @@ static AppDataManager *singletonAppDataManager = nil;
 	return self;
 }
  
-- (id)retain 
-{
-	return self;
-}
- 
-- (unsigned)retainCount 
-{
-	return UINT_MAX;  //denotes an object that cannot be released
-}
- 
-- (void)release 
-{
-	//do nothing
-}
- 
-- (id)autorelease 
-{
-	return self;
-}
 
 @end

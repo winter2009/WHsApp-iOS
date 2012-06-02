@@ -8,16 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "ASIHTTPRequest.h"
-#import <CoreLocation/CoreLocation.h>
 
 @class AppDataManager;
 @class WebServiceManager;
 
-@interface UserRegistrationViewController : UIViewController <UITextFieldDelegate, ASIHTTPRequestDelegate, CLLocationManagerDelegate>
+@interface UserRegistrationViewController : UIViewController <UITextFieldDelegate, ASIHTTPRequestDelegate>
 {
     AppDataManager          *m_appDataManager;
     WebServiceManager       *m_webServiceManager;
-    CLLocationManager       *m_locationManager;
 }
 
 @property (retain, nonatomic) IBOutlet UITextField *txtNickname;

@@ -35,19 +35,6 @@
 @synthesize delegate;
 
 
-- (void)dealloc 
-{
-    [txtUsername release];
-    [txtPassword release];
-    [btnCheckbox release];
-    [loadingView release];
-    [loadingIndicator release];
-    [lblLoadingMessage release];
-    [m_webServiceManager release];
-    
-    [super dealloc];
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -102,6 +89,7 @@
     [super viewWillDisappear:animated];
     
     [self unregisterForKeyboardNotifications];
+    [m_webServiceManager cancelRequests];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -137,7 +125,6 @@
 {
     UserRegistrationViewController *userRegistrationController = [[UserRegistrationViewController alloc] initWithNibName:@"UserRegistrationViewController" bundle:nil];
     [self.navigationController pushViewController:userRegistrationController animated:YES];
-    [userRegistrationController release];
 }
 
 #pragma mark -
@@ -157,7 +144,7 @@
 
 - (void)loginWithUsername:(NSString *)username andPassword:(NSString *)password
 {
-    [m_webServiceManager loginWithUsername:username password:password location:m_locationManager.location andDelegate:self];
+    [m_webServiceManager loginWithUsername:username password:password andDelegate:self];
     [self showLoadingViewWithMessage:@"登陆中..."];
 }
 
@@ -244,8 +231,7 @@
     NSData *jsonData = [request responseData];
     JSONDecoder *decoder = [[JSONDecoder alloc] initWithParseOptions:JKParseOptionNone];
     NSDictionary *response = [decoder objectWithData:jsonData];
-    [decoder release];
-//    NSLog(@"%@", response);
+    NSLog(@"%@", response);
     
     if ( response )
     {
@@ -260,49 +246,13 @@
                 User *user = [[User alloc] init];
                 user.id = [[userDict objectForKey:@"id"] intValue];
                 user.nickName = [userDict objectForKey:@"nick_name"];
-                user.email = [userDict objectForKey:@"email"];
-                
-                if ( [userDict objectForKey:@"age"] != nil && [userDict objectForKey:@"age"] != [NSNull null] )
-                {
-                    user.age = [[userDict objectForKey:@"age"] intValue];
-                }
-                if ( [userDict objectForKey:@"avatar"] != nil && [userDict objectForKey:@"avatar"] != [NSNull null] )
-                {
-                    user.avatar = [userDict objectForKey:@"avatar"];
-                }
-                if ( [userDict objectForKey:@"last_login_time"] != nil && [userDict objectForKey:@"last_login_time"] != [NSNull null] )
-                {
-                    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-                    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-                    user.lastLoginTime = [df dateFromString:[userDict objectForKey:@"last_login_time"]];
-                    [df release];
-                }
-                if ( [userDict objectForKey:@"love_role"] != nil && [userDict objectForKey:@"love_role"] != [NSNull null] )
-                {
-                    user.loveRole = [userDict objectForKey:@"love_role"];
-                }
-                if ( [userDict objectForKey:@"latitude"] != nil && [userDict objectForKey:@"latitude"] != [NSNull null] )
-                {
-                    user.latitude = [[userDict objectForKey:@"latitude"] floatValue];
-                }
-                if ( [userDict objectForKey:@"longitude"] != nil && [userDict objectForKey:@"longitude"] != [NSNull null] )
-                {
-                    user.longitude = [[userDict objectForKey:@"longitude"] floatValue];
-                }
-                if ( [userDict objectForKey:@"love_role_id"] != nil && [userDict objectForKey:@"love_role_id"] != [NSNull null] )
-                {
-                    user.loveRoleID = [[userDict objectForKey:@"love_role_id"] intValue];
-                }
-                if ( [userDict objectForKey:@"mood_message"] != nil && [userDict objectForKey:@"mood_message"] != [NSNull null] )
-                {
-                    user.moodMessage = [userDict objectForKey:@"mood_message"];
-                }
-                
+                user.email = [userDict objectForKey:@"email"];                
                 user.password = txtPassword.text;
                 
                 m_appDataManager.user = user;
+                m_appDataManager.username = user.email;
+                m_appDataManager.password = user.password;
                 [self loginSucceed];
-                [user release];
             }
             else if ( message != nil )
             {
