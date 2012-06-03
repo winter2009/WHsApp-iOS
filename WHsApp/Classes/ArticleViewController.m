@@ -1,33 +1,29 @@
 //
-//  VideoViewController.m
+//  ArticleViewController.m
 //  WHsApp
 //
-//  Created by Zonghui Zhang on 1/6/12.
+//  Created by Zonghui Zhang on 3/6/12.
 //  Copyright (c) 2012 PhoneSoul. All rights reserved.
 //
 
-#import "VideoViewController.h"
+#import "ArticleViewController.h"
 #import "WebServiceManager.h"
 #import "SubCategory.h"
 #import "JSONKit.h"
 #import "Utility.h"
 #import "Media.h"
-#import "YoutubeView.h"
+#import "ArticleDetailViewController.h"
 
-#define TAG_TABLE_CELL_ELEMENT_VIDEO    101
-#define TAG_TABLE_CELL_ELEMENT_TITLE    102
-#define TAG_TABLE_CELL_ELEMENT_SUBTITLE 103
-
-@interface VideoViewController ()
+@interface ArticleViewController ()
 
 - (void)showLoadingView;
 - (void)hideLoadingView;
 
-- (void)getVideos;
+- (void)getArticles;
 
 @end
 
-@implementation VideoViewController
+@implementation ArticleViewController
 @synthesize subCategory;
 @synthesize loadingView;
 @synthesize loadingIndicator;
@@ -54,14 +50,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     m_webServiceManager = [[WebServiceManager alloc] init];
-    m_videos = [[NSMutableArray alloc] init];
+    m_articles = [[NSMutableArray alloc] init];
+    m_articleDetailController = [[ArticleDetailViewController alloc] initWithNibName:@"ArticleDetailViewController" bundle:nil];
 }
 
 - (void)viewDidUnload
 {
-    tableCell = nil;
     [self setLoadingView:nil];
     [self setLoadingIndicator:nil];
     [super viewDidUnload];
@@ -77,7 +73,7 @@
     {
         self.title = self.subCategory.name;
     }
-    [self getVideos];
+    [self getArticles];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -88,7 +84,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [m_webServiceManager cancelRequests];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -103,7 +98,6 @@
 }
 
 #pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -111,12 +105,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [m_videos count];
+    return m_articles.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 90;
+    return 60;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -124,40 +118,25 @@
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) 
-    {
-        [[NSBundle mainBundle] loadNibNamed:@"VideoTableViewCell" owner:self options:nil];
-        cell = tableCell;
-        tableCell = nil;
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    Media *video = [m_videos objectAtIndex:indexPath.row];
-    
-    YoutubeView *youtubeView = (YoutubeView *)[cell viewWithTag:TAG_TABLE_CELL_ELEMENT_VIDEO];
-    UILabel *lblTitle = (UILabel *)[cell viewWithTag:TAG_TABLE_CELL_ELEMENT_TITLE];
-    UILabel *lblSubtitle = (UILabel *)[cell viewWithTag:TAG_TABLE_CELL_ELEMENT_SUBTITLE];
-    
-    NSLog(@"%@, frame:%@", video.urlString, NSStringFromCGRect(youtubeView.frame));
-//    youtubeView = [[YoutubeView alloc] initWithStringAsURL:video.urlString frame:youtubeView.frame];
-    [youtubeView setUrlString:video.urlString];
-    lblTitle.text = video.title;
-    lblSubtitle.text = [NSString stringWithFormat:@"Created: %@", video.createDate];
+    Media *article = [m_articles objectAtIndex:indexPath.row];
+    cell.textLabel.text = article.title;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Created on: %@", article.createDate];
     
     return cell;
 }
 
 #pragma mark - Table view delegate
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    Media *article = [m_articles objectAtIndex:indexPath.row];
+    m_articleDetailController.article = article;
+    [self.navigationController pushViewController:m_articleDetailController animated:YES];
 }
+
 
 #pragma mark -
 #pragma mark Private Methods
@@ -181,7 +160,7 @@
     }
 }
 
-- (void)getVideos
+- (void)getArticles
 {
     if ( self.subCategory != nil )
     {
@@ -209,15 +188,16 @@
             
             if ( [status caseInsensitiveCompare:@"OK"] == NSOrderedSame ) 
             {
-                NSArray *videos = [response objectForKey:@"media"];
-                for ( NSDictionary *videoDict in videos )
+                NSArray *articles = [response objectForKey:@"media"];
+                for ( NSDictionary *articleDict in articles )
                 {
-                    Media *video = [[Media alloc] init];
-                    video.id = [[videoDict objectForKey:@"id"] intValue];
-                    video.title = [videoDict objectForKey:@"media_name"];
-                    video.urlString = [videoDict objectForKey:@"media_url"];
-                    video.createDate = [videoDict objectForKey:@"media_created"];
-                    [m_videos addObject:video];
+                    Media *article = [[Media alloc] init];
+                    article.id = [[articleDict objectForKey:@"id"] intValue];
+                    article.title = [articleDict objectForKey:@"media_name"];
+                    article.urlString = [articleDict objectForKey:@"media_url"];
+                    article.createDate = [articleDict objectForKey:@"media_created"];
+                    article.description = [articleDict objectForKey:@"media_description"];
+                    [m_articles addObject:article];
                 }
                 
                 [self.tableView reloadData];
@@ -243,5 +223,7 @@
     [self hideLoadingView];
     [Utility showAlertWithTitle:@"错误" message:@"连接服务器失败，请检查你的网络连接并稍后再试。"];
 }
+
+
 
 @end

@@ -12,6 +12,8 @@
 #import "Utility.h"
 #import "SubCategory.h"
 #import "VideoViewController.h"
+#import "ImagesViewController.h"
+#import "ArticleViewController.h"
 
 @interface SubCategoryController ()
 
@@ -66,6 +68,10 @@
 {
     [super viewWillAppear:animated];
     
+    if ( self.category )
+    {
+        self.title = self.category;
+    }
     [self getSubCategories];
 }
 
@@ -137,11 +143,15 @@
     }
     else if ( [self.category caseInsensitiveCompare:@"image"] == NSOrderedSame )
     {
-        // TODO: handle images
+        ImagesViewController *imageController = [[ImagesViewController alloc] initWithNibName:@"" bundle:nil];
+        imageController.subCategory = (SubCategory *)[m_subCategories objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:imageController animated:YES];
     }
     else if ( [self.category caseInsensitiveCompare:@"article"] == NSOrderedSame )
     {
-        // TODO: handle articles
+        ArticleViewController *articleController = [[ArticleViewController alloc] initWithNibName:@"ArticleViewController" bundle:nil];
+        articleController.subCategory = (SubCategory *)[m_subCategories objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:articleController animated:YES];
     }
 }
 
