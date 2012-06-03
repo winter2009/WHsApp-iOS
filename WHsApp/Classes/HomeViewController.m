@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "SubCategoryController.h"
+#import "AboutUsViewController.h"
 
 @implementation HomeViewController
 
@@ -80,11 +81,33 @@
 
 - (IBAction)btnMessageClicked:(id)sender 
 {
+    if ([MFMailComposeViewController canSendMail]) 
+    {        
+        MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+        mailViewController.mailComposeDelegate = self;
+        [mailViewController setToRecipients:[NSArray arrayWithObject:@"admin@whsapp.com"]];
+        [mailViewController setSubject:@"Feedback for iPhone app."];
+        [mailViewController setMessageBody:@"Your message goes here." isHTML:NO];
+        
+        [self presentModalViewController:mailViewController animated:YES];        
+    }    
+    else 
+    {        
+        NSLog(@"Device is unable to send email in its current state.");
+    }
 }
 
 - (IBAction)btnAboutUsClicked:(id)sender 
 {
+    m_aboutUsController = [[AboutUsViewController alloc] initWithNibName:@"AboutUsViewController" bundle:nil];
+    [self.navigationController pushViewController:m_aboutUsController animated:YES];
 }
 
+#pragma mark -
+#pragma mark MailCompose Delegate
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
 
 @end

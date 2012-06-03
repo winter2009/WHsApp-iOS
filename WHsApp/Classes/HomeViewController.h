@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
 @class SubCategoryController;
+@class AboutUsViewController;
 
-@interface HomeViewController : UIViewController
+@interface HomeViewController : UIViewController <MFMailComposeViewControllerDelegate>
 {
     SubCategoryController   *m_subCategoryController;
+    AboutUsViewController   *m_aboutUsController;
 }
 
 - (IBAction)btnVideoClicked:(id)sender;
