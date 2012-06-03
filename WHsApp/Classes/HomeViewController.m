@@ -36,6 +36,7 @@
     self.title = @"WHsApp";
     
     // Do any additional setup after loading the view from its nib.
+    m_subCategoryController = [[SubCategoryController alloc] initWithNibName:@"SubCategoryController" bundle:nil];
 }
 
 - (void)viewDidUnload
@@ -55,21 +56,26 @@
 #pragma mark IBActions
 - (IBAction)btnVideoClicked:(id)sender
 {
-    SubCategoryController *subCategoryController = [[SubCategoryController alloc] initWithNibName:@"SubCategoryController" bundle:nil];
-    subCategoryController.category = @"video";
-    [self.navigationController pushViewController:subCategoryController animated:YES];
+    m_subCategoryController.category = @"video";
+    [self.navigationController pushViewController:m_subCategoryController animated:YES];
 }
 
 - (IBAction)btnAudioClicked:(id)sender 
 {
+    m_subCategoryController.category = @"audio";
+    [self.navigationController pushViewController:m_subCategoryController animated:YES];
 }
 
 - (IBAction)btnImageClicked:(id)sender 
 {
+    m_subCategoryController.category = @"image";
+    [self.navigationController pushViewController:m_subCategoryController animated:YES];
 }
 
 - (IBAction)btnArticleClicked:(id)sender 
 {
+    m_subCategoryController.category = @"article";
+    [self.navigationController pushViewController:m_subCategoryController animated:YES];
 }
 
 - (IBAction)btnMessageClicked:(id)sender 

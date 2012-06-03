@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class SubCategoryController;
+
 @interface HomeViewController : UIViewController
+{
+    SubCategoryController   *m_subCategoryController;
+}
 
 - (IBAction)btnVideoClicked:(id)sender;
 - (IBAction)btnAudioClicked:(id)sender;

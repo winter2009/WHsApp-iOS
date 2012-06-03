@@ -133,8 +133,9 @@
     UILabel *lblTitle = (UILabel *)[cell viewWithTag:TAG_TABLE_CELL_ELEMENT_TITLE];
     UILabel *lblSubtitle = (UILabel *)[cell viewWithTag:TAG_TABLE_CELL_ELEMENT_SUBTITLE];
     
-    NSLog(@"%@", video.urlString);
-    youtubeView = [[YoutubeView alloc] initWithStringAsURL:video.urlString frame:youtubeView.frame];
+    NSLog(@"%@, frame:%@", video.urlString, NSStringFromCGRect(youtubeView.frame));
+//    youtubeView = [[YoutubeView alloc] initWithStringAsURL:video.urlString frame:youtubeView.frame];
+    [youtubeView setUrlString:video.urlString];
     lblTitle.text = video.title;
     lblSubtitle.text = [NSString stringWithFormat:@"Created: %@", video.createDate];
     

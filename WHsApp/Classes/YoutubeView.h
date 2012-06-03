@@ -10,6 +10,8 @@
 
 @interface YoutubeView : UIWebView
 
+
 - (YoutubeView *)initWithStringAsURL:(NSString *)urlString frame:(CGRect)frame;
+- (void)setUrlString:(NSString *)urlString;
 
 @end
