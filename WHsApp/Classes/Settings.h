@@ -9,7 +9,8 @@
 #ifndef LaLa_Settings_h
 #define LaLa_Settings_h
 
-#define WEBSERVICE_BASE_URL                 @"http://192.168.1.101:8888/media_center/index.php/api/"
+//#define WEBSERVICE_BASE_URL                 @"http://192.168.1.101:8888/media_center/index.php/api/"
+#define WEBSERVICE_BASE_URL                 @"http://apps.freewavemedia.com/whsapp/index.php/api/"
 #define WEBSERVICE_LOGIN                    @"userlogin"
 #define WEBSERVICE_REGISTER                 @"registeruser"
 #define WEBSERVICE_GETCATEGORIES            @"getcategories"

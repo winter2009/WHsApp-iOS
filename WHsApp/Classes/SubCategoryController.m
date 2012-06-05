@@ -139,7 +139,9 @@
     }
     else if ( [self.category caseInsensitiveCompare:@"audio"] == NSOrderedSame )
     {
-        // TODO: handle audios
+        VideoViewController *videoController = [[VideoViewController alloc] initWithNibName:@"VideoViewController" bundle:nil];
+        videoController.subCategory = (SubCategory *)[m_subCategories objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:videoController animated:YES];
     }
     else if ( [self.category caseInsensitiveCompare:@"image"] == NSOrderedSame )
     {

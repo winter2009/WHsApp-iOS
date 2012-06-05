@@ -829,6 +829,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jiang Liheng (YNWE5F42W8)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -844,6 +845,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "209F9BC6-19F0-4F04-9FCE-680D2D311B48";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -854,7 +856,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FreeWave Media Pte. Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FreeWave Media Pte. Ltd.";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -863,6 +866,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "58920A6C-484C-40D2-88EA-9C07ED4D282D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "58920A6C-484C-40D2-88EA-9C07ED4D282D";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
