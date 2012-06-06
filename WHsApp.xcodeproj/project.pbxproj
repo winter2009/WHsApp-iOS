@@ -52,6 +52,10 @@
 		E3355340157906130024FBAD /* VideoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E335533F157906130024FBAD /* VideoTableViewCell.xib */; };
 		E335534315790A850024FBAD /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = E335534215790A850024FBAD /* Media.m */; };
 		E33B35A91577D8A700624E3D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E33B35A81577D8A700624E3D /* User.m */; };
+		E36714BF157FAFDD0049F4AC /* KusoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E36714BD157FAFDD0049F4AC /* KusoViewController.m */; };
+		E36714C0157FAFDD0049F4AC /* KusoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E36714BE157FAFDD0049F4AC /* KusoViewController.xib */; };
+		E36714C4157FB4290049F4AC /* template2.png in Resources */ = {isa = PBXBuildFile; fileRef = E36714C2157FB4290049F4AC /* template2.png */; };
+		E36714C5157FB4290049F4AC /* template3.png in Resources */ = {isa = PBXBuildFile; fileRef = E36714C3157FB4290049F4AC /* template3.png */; };
 		E36C0DC1157B9180004B1608 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E36C0DBF157B9180004B1608 /* MessageViewController.m */; };
 		E36C0DC2157B9180004B1608 /* MessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E36C0DC0157B9180004B1608 /* MessageViewController.xib */; };
 		E36C0DC4157B91FD004B1608 /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E36C0DC3157B91FD004B1608 /* MessageTableViewCell.xib */; };
@@ -85,6 +89,8 @@
 		E3CD25DA157B49CC00F0B749 /* ArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CD25D8157B49CB00F0B749 /* ArticleDetailViewController.m */; };
 		E3CD25DB157B49CC00F0B749 /* ArticleDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3CD25D9157B49CB00F0B749 /* ArticleDetailViewController.xib */; };
 		E3CD25DD157B4A8E00F0B749 /* seperator.png in Resources */ = {isa = PBXBuildFile; fileRef = E3CD25DC157B4A8E00F0B749 /* seperator.png */; };
+		E3FF8607157FC3B1007B83D6 /* SaveImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3FF8605157FC3B1007B83D6 /* SaveImageViewController.m */; };
+		E3FF8608157FC3B1007B83D6 /* SaveImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3FF8606157FC3B1007B83D6 /* SaveImageViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +178,11 @@
 		E335534215790A850024FBAD /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media.m; sourceTree = "<group>"; };
 		E33B35A71577D8A700624E3D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		E33B35A81577D8A700624E3D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		E36714BC157FAFDD0049F4AC /* KusoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KusoViewController.h; sourceTree = "<group>"; };
+		E36714BD157FAFDD0049F4AC /* KusoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KusoViewController.m; sourceTree = "<group>"; };
+		E36714BE157FAFDD0049F4AC /* KusoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KusoViewController.xib; sourceTree = "<group>"; };
+		E36714C2157FB4290049F4AC /* template2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = template2.png; sourceTree = "<group>"; };
+		E36714C3157FB4290049F4AC /* template3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = template3.png; sourceTree = "<group>"; };
 		E36C0DBE157B9180004B1608 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		E36C0DBF157B9180004B1608 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		E36C0DC0157B9180004B1608 /* MessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageViewController.xib; sourceTree = "<group>"; };
@@ -229,6 +240,9 @@
 		E3CD25D8157B49CB00F0B749 /* ArticleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleDetailViewController.m; sourceTree = "<group>"; };
 		E3CD25D9157B49CB00F0B749 /* ArticleDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleDetailViewController.xib; sourceTree = "<group>"; };
 		E3CD25DC157B4A8E00F0B749 /* seperator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seperator.png; sourceTree = "<group>"; };
+		E3FF8604157FC3B1007B83D6 /* SaveImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveImageViewController.h; sourceTree = "<group>"; };
+		E3FF8605157FC3B1007B83D6 /* SaveImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveImageViewController.m; sourceTree = "<group>"; };
+		E3FF8606157FC3B1007B83D6 /* SaveImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SaveImageViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -361,6 +375,7 @@
 		E314265D1572822000E7DC7A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E3671475157FA24E0049F4AC /* KusoCamera */,
 				E36C0DC7157B9878004B1608 /* AboutUs */,
 				E36C0DBC157B90EA004B1608 /* Message */,
 				E31426AA1572841500E7DC7A /* Login */,
@@ -430,6 +445,8 @@
 				E3CD25D9157B49CB00F0B749 /* ArticleDetailViewController.xib */,
 				E36C0DC0157B9180004B1608 /* MessageViewController.xib */,
 				E36C0DCA157B9890004B1608 /* AboutUsViewController.xib */,
+				E36714BE157FAFDD0049F4AC /* KusoViewController.xib */,
+				E3FF8606157FC3B1007B83D6 /* SaveImageViewController.xib */,
 				E335533F157906130024FBAD /* VideoTableViewCell.xib */,
 				E36C0DC3157B91FD004B1608 /* MessageTableViewCell.xib */,
 			);
@@ -440,8 +457,9 @@
 		E31426631572827A00E7DC7A /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				E3CD25DC157B4A8E00F0B749 /* seperator.png */,
 				E31426B51572846A00E7DC7A /* Login */,
+				E36714C1157FB4190049F4AC /* Kuso */,
+				E3CD25DC157B4A8E00F0B749 /* seperator.png */,
 			);
 			name = Images;
 			path = Resources/Images;
@@ -513,6 +531,26 @@
 				E31426B71572847700E7DC7A /* checkbox_uncheck.png */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		E3671475157FA24E0049F4AC /* KusoCamera */ = {
+			isa = PBXGroup;
+			children = (
+				E36714BC157FAFDD0049F4AC /* KusoViewController.h */,
+				E36714BD157FAFDD0049F4AC /* KusoViewController.m */,
+				E3FF8604157FC3B1007B83D6 /* SaveImageViewController.h */,
+				E3FF8605157FC3B1007B83D6 /* SaveImageViewController.m */,
+			);
+			name = KusoCamera;
+			sourceTree = "<group>";
+		};
+		E36714C1157FB4190049F4AC /* Kuso */ = {
+			isa = PBXGroup;
+			children = (
+				E36714C2157FB4290049F4AC /* template2.png */,
+				E36714C3157FB4290049F4AC /* template3.png */,
+			);
+			name = Kuso;
 			sourceTree = "<group>";
 		};
 		E36C0DBC157B90EA004B1608 /* Message */ = {
@@ -707,6 +745,10 @@
 				E36C0DC2157B9180004B1608 /* MessageViewController.xib in Resources */,
 				E36C0DC4157B91FD004B1608 /* MessageTableViewCell.xib in Resources */,
 				E36C0DCC157B9890004B1608 /* AboutUsViewController.xib in Resources */,
+				E36714C0157FAFDD0049F4AC /* KusoViewController.xib in Resources */,
+				E36714C4157FB4290049F4AC /* template2.png in Resources */,
+				E36714C5157FB4290049F4AC /* template3.png in Resources */,
+				E3FF8608157FC3B1007B83D6 /* SaveImageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,6 +824,8 @@
 				E3CD25DA157B49CC00F0B749 /* ArticleDetailViewController.m in Sources */,
 				E36C0DC1157B9180004B1608 /* MessageViewController.m in Sources */,
 				E36C0DCB157B9890004B1608 /* AboutUsViewController.m in Sources */,
+				E36714BF157FAFDD0049F4AC /* KusoViewController.m in Sources */,
+				E3FF8607157FC3B1007B83D6 /* SaveImageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -866,8 +910,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "58920A6C-484C-40D2-88EA-9C07ED4D282D";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "58920A6C-484C-40D2-88EA-9C07ED4D282D";
+				PROVISIONING_PROFILE = "892F0AD1-DEFE-45CA-9EED-500A9D6CE472";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "892F0AD1-DEFE-45CA-9EED-500A9D6CE472";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

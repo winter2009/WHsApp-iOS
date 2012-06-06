@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "SubCategoryController.h"
 #import "AboutUsViewController.h"
+#import "KusoViewController.h"
 
 @implementation HomeViewController
 
@@ -38,6 +39,8 @@
     
     // Do any additional setup after loading the view from its nib.
     m_subCategoryController = [[SubCategoryController alloc] initWithNibName:@"SubCategoryController" bundle:nil];
+    m_aboutUsController = [[AboutUsViewController alloc] initWithNibName:@"AboutUsViewController" bundle:nil];
+    m_kusoController = [[KusoViewController alloc] initWithNibName:@"KusoViewController" bundle:nil];
 }
 
 - (void)viewDidUnload
@@ -99,8 +102,12 @@
 
 - (IBAction)btnAboutUsClicked:(id)sender 
 {
-    m_aboutUsController = [[AboutUsViewController alloc] initWithNibName:@"AboutUsViewController" bundle:nil];
     [self.navigationController pushViewController:m_aboutUsController animated:YES];
+}
+
+- (IBAction)btnKusoClicked:(id)sender 
+{
+    [self.navigationController pushViewController:m_kusoController animated:YES];
 }
 
 #pragma mark -

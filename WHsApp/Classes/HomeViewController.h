@@ -12,11 +12,13 @@
 
 @class SubCategoryController;
 @class AboutUsViewController;
+@class KusoViewController;
 
 @interface HomeViewController : UIViewController <MFMailComposeViewControllerDelegate>
 {
     SubCategoryController   *m_subCategoryController;
     AboutUsViewController   *m_aboutUsController;
+    KusoViewController      *m_kusoController;
 }
 
 - (IBAction)btnVideoClicked:(id)sender;
@@ -25,6 +27,7 @@
 - (IBAction)btnArticleClicked:(id)sender;
 - (IBAction)btnMessageClicked:(id)sender;
 - (IBAction)btnAboutUsClicked:(id)sender;
+- (IBAction)btnKusoClicked:(id)sender;
 
 
 @end
