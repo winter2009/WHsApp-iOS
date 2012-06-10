@@ -10,6 +10,8 @@
 		320AF8492C47A4D819F7C451 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320AF8492C47A4D819F7C450 /* QuartzCore.framework */; };
 		E30C269E1584DB1100EC50A6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E30C269D1584DB1100EC50A6 /* Default.png */; };
 		E30C26A01584DB1400EC50A6 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E30C269F1584DB1400EC50A6 /* Default@2x.png */; };
+		E30C26A21585003900EC50A6 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E30C26A11585003900EC50A6 /* icon@2x.png */; };
+		E30C26A41585003C00EC50A6 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E30C26A31585003C00EC50A6 /* icon.png */; };
 		E3142628157281AF00E7DC7A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3142627157281AF00E7DC7A /* UIKit.framework */; };
 		E314262A157281AF00E7DC7A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3142629157281AF00E7DC7A /* Foundation.framework */; };
 		E314262C157281AF00E7DC7A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E314262B157281AF00E7DC7A /* CoreGraphics.framework */; };
@@ -125,6 +127,8 @@
 		320B6C86F11D9990244A9730 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../../../../../../../Developments/APIs/iPhone/Git/three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
 		E30C269D1584DB1100EC50A6 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		E30C269F1584DB1400EC50A6 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		E30C26A11585003900EC50A6 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		E30C26A31585003C00EC50A6 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		E3142623157281AF00E7DC7A /* WHsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WHsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3142627157281AF00E7DC7A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E3142629157281AF00E7DC7A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -314,6 +318,8 @@
 		E3142618157281AF00E7DC7A = {
 			isa = PBXGroup;
 			children = (
+				E30C26A31585003C00EC50A6 /* icon.png */,
+				E30C26A11585003900EC50A6 /* icon@2x.png */,
 				E30C269F1584DB1400EC50A6 /* Default@2x.png */,
 				E30C269D1584DB1100EC50A6 /* Default.png */,
 				E314262D157281AF00E7DC7A /* WHsApp */,
@@ -827,6 +833,8 @@
 				E3820EDF1584CC9E0020D03C /* icon_image@2x.png in Resources */,
 				E30C269E1584DB1100EC50A6 /* Default.png in Resources */,
 				E30C26A01584DB1400EC50A6 /* Default@2x.png in Resources */,
+				E30C26A21585003900EC50A6 /* icon@2x.png in Resources */,
+				E30C26A41585003C00EC50A6 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
