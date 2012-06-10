@@ -58,6 +58,14 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.title = @"Kuso 合照";
+    self.navigationController.navigationBarHidden = NO;
+    [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:178.0/255.0 green:168.0/255.0 blue:127.0/255.0 alpha:1.0]];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);

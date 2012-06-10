@@ -18,6 +18,7 @@
 }
 
 @property (nonatomic, strong) NSString *category;
+@property (nonatomic, strong) NSString *categoryName;
 @property (strong, nonatomic) IBOutlet UIView *loadingView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 

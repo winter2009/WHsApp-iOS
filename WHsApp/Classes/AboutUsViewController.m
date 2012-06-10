@@ -33,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"关于我们";
+
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -42,6 +42,15 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.title = @"About 关于";
+    self.navigationController.navigationBarHidden = NO;
+    
+    [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:143.0/255.0 green:31.0/255.0 blue:237.0/255.0 alpha:1.0]];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

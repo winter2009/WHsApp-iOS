@@ -26,6 +26,7 @@
 
 @implementation SubCategoryController
 @synthesize category;
+@synthesize categoryName;
 @synthesize loadingView;
 @synthesize loadingIndicator;
 
@@ -67,10 +68,27 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = NO;
     
-    if ( self.category )
+    if ( self.category && self.categoryName )
     {
-        self.title = self.category;
+        self.title = self.categoryName;
+        if ( [self.category caseInsensitiveCompare:@"video"] == NSOrderedSame )
+        {
+            [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:243.0/255.0 green:44.0/255.0 blue:109.0/255.0 alpha:1.0]];
+        }
+        if ( [self.category caseInsensitiveCompare:@"audio"] == NSOrderedSame )
+        {
+            [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:31.0/255.0 green:206.0/255.0 blue:237.0/255.0 alpha:1.0]];
+        }
+        if ( [self.category caseInsensitiveCompare:@"image"] == NSOrderedSame )
+        {
+            [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:17.0/255.0 green:133.0/255.0 blue:222.0/255.0 alpha:1.0]];
+        }
+        if ( [self.category caseInsensitiveCompare:@"article"] == NSOrderedSame )
+        {
+            [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:246.0/255.0 green:180.0/255.0 blue:54.0/255.0 alpha:1.0]];
+        }
     }
     [self getSubCategories];
 }

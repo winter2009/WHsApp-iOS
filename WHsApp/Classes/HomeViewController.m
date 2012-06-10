@@ -50,6 +50,13 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBarHidden = YES;
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -61,24 +68,28 @@
 - (IBAction)btnVideoClicked:(id)sender
 {
     m_subCategoryController.category = @"video";
+    m_subCategoryController.categoryName = @"Video 视屏";
     [self.navigationController pushViewController:m_subCategoryController animated:YES];
 }
 
 - (IBAction)btnAudioClicked:(id)sender 
 {
     m_subCategoryController.category = @"audio";
+    m_subCategoryController.categoryName = @"Audio 音频";
     [self.navigationController pushViewController:m_subCategoryController animated:YES];
 }
 
 - (IBAction)btnImageClicked:(id)sender 
 {
     m_subCategoryController.category = @"image";
+    m_subCategoryController.categoryName = @"Image 图片";
     [self.navigationController pushViewController:m_subCategoryController animated:YES];
 }
 
 - (IBAction)btnArticleClicked:(id)sender 
 {
     m_subCategoryController.category = @"article";
+    m_subCategoryController.categoryName = @"Article 文章";
     [self.navigationController pushViewController:m_subCategoryController animated:YES];
 }
 
